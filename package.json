@@ -1,0 +1,22 @@
+{
+	"name": "socket-chat-practice",
+	"version": "0.0.1",
+	"description": "practice socket.io",
+	"scripts": {
+		"start": "node app.coffee"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Lorde-Y/socketChat.git"
+	},
+	"author": "Kay",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.12.3"
+	},
+	"devDependencies": {
+		"coffee-script": "^1.9.1",
+		"gulp": "^3.8.11",
+		"gulp-nodemon": "^2.0.2"
+	}
+}
