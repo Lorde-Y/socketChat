@@ -58,7 +58,7 @@ $(document).on 'click', '.user-ul li', ()->
 	$('.user-ul li').removeClass 'active'
 	$(@).addClass 'active'
 
-# send public message
+userName = null
 $('#message-form').submit ()->
 	$dom = $('.user-ul').find('li.active')
 	userName = $dom.html()
@@ -69,8 +69,14 @@ $('#message-form').submit ()->
 		socketClient.emit 'onMessage', msg
 	else
 		# 私聊
-		socketClient.emit 'to'+userName, msg
+		socketClient.emit 'private message', msg
 	return false
+
+#send private message
+socketClient.on 'to'+userName, ()->
+
+
+
 
 receiveMsg = (dom, data)->
 	html = "<div class='messages'>
@@ -82,6 +88,7 @@ receiveMsg = (dom, data)->
 			</div>"
 	$('.message-list').append html
 
+# send public message
 #收到--后端传回来的--socket事件 立即执行
 socketClient.on 'my message', (data)->
 	receiveMsg 'my-message', data
