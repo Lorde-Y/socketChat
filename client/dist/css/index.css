@@ -1,0 +1,200 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+input {
+  border: 0;
+  outline: none;
+}
+body {
+  background-color: #efeff4;
+}
+.user-login {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: absolute;
+  z-index: 99;
+  color: #fff;
+}
+.user-login form {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  color: #fff;
+}
+.user-login form input[type='text'] {
+  width: 200px;
+  height: 30px;
+  border: 1px solid #ff8563;
+  border-radius: 4px;
+  text-indent: 10px;
+}
+.user-login form input[type='submit'] {
+  width: 120px;
+  border-radius: 4px;
+  background: #f06c0a;
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+.container {
+  position: absolute;
+  width: 76%;
+  height: 100%;
+}
+.container .chat-status .red {
+  color: red;
+  margin: 0 5px;
+}
+.container .login-out {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  width: 75px;
+  height: 20px;
+  line-height: 20px;
+  background: red;
+  border-radius: 4px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+}
+.container .message-list {
+  position: absolute;
+  width: 100%;
+  font-size: 16px;
+  color: #fff;
+}
+.container .message-list .welcome {
+  font-size: 18px;
+  text-align: center;
+  color: #847979;
+}
+.container .message-list .welcome .red {
+  color: red;
+  margin: 0 5px;
+}
+.container .message-list .user-my-message {
+  float: right;
+  width: 20px;
+  height: 20px;
+  background: #1D181B;
+  padding: 7px;
+  width: 25px;
+  font-weight: normal;
+  font-size: 16px;
+  color: #fff;
+  overflow: hidden;
+  margin-left: 6px;
+  border-radius: 4px;
+}
+.container .message-list .user-others-message {
+  float: left;
+  width: 20px;
+  height: 20px;
+  background: #1D181B;
+  padding: 7px;
+  width: 25px;
+  font-weight: normal;
+  font-size: 16px;
+  color: #fff;
+  overflow: hidden;
+  margin-right: 6px;
+  border-radius: 4px;
+}
+.container .message-list .messages {
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 5px;
+  clear: both;
+  position: relative;
+}
+.container .message-list .my-message-circle {
+  width: 0;
+  height: 0;
+  border-top: solid transparent;
+  border-left: 7px solid #60B044;
+  border-bottom: 4px solid transparent;
+  position: absolute;
+  right: -7px;
+  top: 13px;
+}
+.container .message-list .others-message-circle {
+  width: 0;
+  height: 0;
+  border-top: solid transparent;
+  border-right: 7px solid #B58A8A;
+  border-bottom: 4px solid transparent;
+  position: absolute;
+  left: -7px;
+  top: 13px;
+}
+.container .message-list .my-message {
+  text-align: right;
+  background: #60b044;
+  float: right;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+.container .message-list .others-message {
+  background: #B58A8A;
+  text-align: left;
+  float: left;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+.container form {
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 50px;
+  font-size: 16px;
+}
+.container form input[type='text'] {
+  width: 70%;
+  height: 50px;
+  line-height: 50px;
+  outline: none;
+  border: 1px solid #ff8563;
+  border-radius: 4px;
+  text-indent: 20px;
+}
+.container form input[type='submit'] {
+  outline: none;
+  border: 0;
+  border-radius: 4px;
+  background: #f06c0a;
+  height: 50px;
+  line-height: 50px;
+  color: #fff;
+  width: 100px;
+  cursor: pointer;
+}
+.user-list {
+  width: 20%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-left: 1px solid #ccc;
+  position: absolute;
+  right: 0;
+}
+.user-list .header {
+  text-align: center;
+}
+.user-list ul li {
+  text-indent: 10px;
+  cursor: pointer;
+  height: 30px;
+  line-height: 30px;
+  background: #ff8563;
+  color: #fff;
+  margin-top: 5px;
+}
+.user-list ul li:hover {
+  opacity: .8;
+}
