@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>we chat</title>
+	<link rel="stylesheet" type="text/css" href="/css/private.css">
+</head>
+<body>
+	<div class='user-login'>
+		<form id='login-form'>
+			<input type="text" placeholder="set your name" maxlength="10" required="required" id='user-name'/>
+			<input type="submit" id='set-user-btn' value="confirm"/>
+		</form>
+	</div>
+	<div class='container'>
+		<div class='login-out'>logout</div>
+		<div class='chat-status'>Kay welcome</div>
+		<div class='message-list'>
+		</div>
+		<form id='message-form'>
+			<input type='text' id='message' required="required" />
+			<input type='submit' value="send" id="submit-form"/>
+		</form>
+	</div>
+	<div class="user-list">
+		<div class='header'>用户列表</div>
+		<ul class='user-ul'>
+		</ul>
+	</div>
+	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="/js/private.js"></script>
+</body>
+</html>

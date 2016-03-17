@@ -14,6 +14,15 @@ $('#login-form').submit(function() {
   return false;
 });
 
+socketClient.on('user logined', function(userMsg) {
+  $('.user-login').remove();
+  return userLoignMsg(userMsg);
+});
+
+socketClient.on('user loginOut', function(userMsg) {
+  return userLoignMsg(userMsg);
+});
+
 userLoignMsg = function(userMsg) {
   var html;
   console.log(userMsg);
@@ -35,7 +44,7 @@ userLoignMsg = function(userMsg) {
 
 addUser = function(userMsg) {
   var html, user;
-  html = "<li class='all'>所有人(默认群聊)</li>";
+  html = "<li class='all active'>所有人(默认群聊)</li>";
   for (user in userMsg.userList) {
     html += "<li>" + user + "</li>";
   }
@@ -66,13 +75,9 @@ removeUser = function(userMsg) {
   return results;
 };
 
-socketClient.on('user logined', function(userMsg) {
-  $('.user-login').remove();
-  return userLoignMsg(userMsg);
-});
-
-socketClient.on('user loginOut', function(userMsg) {
-  return userLoignMsg(userMsg);
+$(document).on('click', '.user-ul li', function() {
+  $('.user-ul li').removeClass('active');
+  return $(this).addClass('active');
 });
 
 $('#message-form').submit(function() {
@@ -97,6 +102,6 @@ socketClient.on('others message', function(data) {
   return receiveMsg('others-message', data);
 });
 
-module.exports = console.log('ddaaaaaaaaaaaa');
+module.exports = console.log('chat with socket');
 
 },{}]},{},[1]);

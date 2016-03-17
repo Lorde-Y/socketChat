@@ -60,10 +60,16 @@ $(document).on 'click', '.user-ul li', ()->
 
 # send public message
 $('#message-form').submit ()->
+	$dom = $('.user-ul').find('li.active')
+	userName = $dom.html()
 	console.log $('#message').val()
-	msg =  $('#message').val() 
-	#注册 socket 事件-->发送至后端
-	socketClient.emit 'onMessage', msg
+	msg =  $('#message').val()
+	if $dom.hasClass('.all')
+		# 群聊
+		socketClient.emit 'onMessage', msg
+	else
+		# 私聊
+		socketClient.emit 'to'+userName, msg
 	return false
 
 receiveMsg = (dom, data)->
