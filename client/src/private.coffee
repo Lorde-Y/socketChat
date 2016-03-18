@@ -58,24 +58,47 @@ $(document).on 'click', '.user-ul li', ()->
 	$('.user-ul li').removeClass 'active'
 	$(@).addClass 'active'
 
-userName = null
+toSomeOne = null
 $('#message-form').submit ()->
 	$dom = $('.user-ul').find('li.active')
-	userName = $dom.html()
+	toSomeOne = $dom.html()
 	console.log $('#message').val()
 	msg =  $('#message').val()
-	if $dom.hasClass('.all')
+	if $dom.hasClass('all')
 		# 群聊
 		socketClient.emit 'onMessage', msg
 	else
-		# 私聊
-		socketClient.emit 'private message', msg
+		console.log 'start private chat...................'
+		# send private message 私聊
+		data = {
+			toSomeOne:  toSomeOne
+			msg: msg
+		}
+		socketClient.emit 'private message', data
+		# socketClient.on 'to'+toSomeOne, (data)->
 	return false
 
-#send private message
-socketClient.on 'to'+userName, ()->
+socketClient.on 'my private message', (data)->
+	console.log 'my one to one...'
+	html = "<div class='messages'>
+		<div class='my-private-message'>#{data.username}</div>
+		<div class='my-message'>
+			#{data.msg}
+			<div class='my-message-circle'></div>
+		</div>
+	</div>"
+	$('.message-list').append html
 
-
+socketClient.on 'oneToOne', (data)->
+	console.log 'client one to one...'
+	html = "<div class='messages'>
+		<div class='others-private-message'>#{data.username}</div>
+		<div class='others-message'>
+			#{data.msg}
+			<div class='others-message-circle'></div>
+		</div>
+	</div>"
+	$('.message-list').append html
 
 
 receiveMsg = (dom, data)->

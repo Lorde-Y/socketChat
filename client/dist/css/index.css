@@ -90,7 +90,8 @@ body {
   margin-left: 6px;
   border-radius: 4px;
 }
-.container .message-list .user-others-message {
+.container .message-list .user-others-message,
+.container .message-list .others-private-message {
   float: left;
   width: 20px;
   height: 20px;

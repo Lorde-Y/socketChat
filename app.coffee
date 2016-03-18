@@ -59,6 +59,7 @@ userList = {}
 app.get '/', (req, res)->
 	res.sendFile __dirname + '/client/private.html'
 
+arrAllSocket = [] 
 socketIo.on 'connection', (socket)->
 	console.log 'i connected.....'
 
@@ -66,8 +67,9 @@ socketIo.on 'connection', (socket)->
 	socket.on 'user login', (userName)->
 		userCount++
 		hasUserLogin = true
-		socket.username = userName  #声明赋值
+		socket.username = userName  #声明赋值, 以后每次发送消息，他都能自动知道 是哪个用户发出的
 		userList[socket.username] = userName
+		arrAllSocket[userName] = socket  #把各自的 socket存到全局数组里面去 
 		userMsg = {
 			userCount: userCount
 			userName: userName
@@ -89,7 +91,18 @@ socketIo.on 'connection', (socket)->
 			socket.broadcast.emit 'user loginOut', userMsg
 			console.log 'user disconnected'
 
-	# receive users'messages
+	socket.on 'private message', (data)->
+		console.log 'enteinf........................'
+		toSomeOneScoket = arrAllSocket[data.toSomeOne]  #找到 客户端要 私聊某个人，获取他的 对应socket
+		if socket.username is data.toSomeOne
+			console.log '不能与自己瞎bb'
+			return
+		if toSomeOneScoket
+			data.username = socket.username
+			socket.emit 'my private message', data		# 发送给本地客户端
+			toSomeOneScoket.emit 'oneToOne', data #发送给我想 私聊的 客户端
+
+	# receive users' public messages
 	socket.on 'onMessage', (msg)->
 		data = {
 			userName: socket.username  #自动判别是谁发出的
